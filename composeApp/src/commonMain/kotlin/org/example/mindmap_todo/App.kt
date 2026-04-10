@@ -54,6 +54,7 @@ fun App() {
             }
 
             // UI Overlays
+            ResetButton(onReset = { viewModel.resetState() }, modifier = Modifier.align(Alignment.TopEnd))
             SaveStatusIndicator(state.saveStatus, modifier = Modifier.align(Alignment.BottomStart))
             MiniMap(state.nodes, modifier = Modifier.align(Alignment.BottomEnd))
         }
@@ -83,6 +84,22 @@ fun InfiniteGrid(panOffset: Offset) {
                 strokeWidth = 1f
             )
         }
+    }
+}
+
+@Composable
+fun ResetButton(onReset: () -> Unit, modifier: Modifier = Modifier) {
+    Button(
+        onClick = onReset,
+        modifier = modifier.padding(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = CyberpunkNoir.Slate900,
+            contentColor = CyberpunkNoir.Indigo300
+        ),
+        shape = RoundedCornerShape(8.dp),
+        border = BorderStroke(1.dp, CyberpunkNoir.Indigo500.copy(alpha = 0.5f))
+    ) {
+        Text("Reset State")
     }
 }
 

@@ -48,14 +48,19 @@ class MindMapViewModel {
         }
     }
 
+    fun resetState() {
+        createInitialState()
+    }
+
     private fun createInitialState() {
         val rootNode = Node(
             id = "root",
             position = Offset(200f, 200f),
             tasks = List(5) { i -> Task(id = "task_$i", text = "Task ${i + 1}") }
         )
-        state = state.copy(
+        state = MindMapState(
             nodes = mapOf(rootNode.id to rootNode),
+            panOffset = Offset.Zero,
             saveStatus = SaveStatus.Synced
         )
         saveState()

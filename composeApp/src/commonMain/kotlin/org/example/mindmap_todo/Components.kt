@@ -39,7 +39,7 @@ fun NodeView(
     Box(
         modifier = Modifier
             .offset { IntOffset(node.position.x.toInt(), node.position.y.toInt()) }
-            .width(280.dp)
+            .width(350.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(CyberpunkNoir.GlassWhite)
             .border(1.dp, CyberpunkNoir.Indigo500.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
@@ -181,7 +181,7 @@ fun ConnectionsView(nodes: Map<String, Node>, panOffset: Offset) {
             node.parentId?.let { parentId ->
                 val parent = nodes[parentId]
                 if (parent != null) {
-                    val start = parent.position + Offset(280f, 100f) + panOffset // Approximate center-right of parent
+                    val start = parent.position + Offset(350f, 100f) + panOffset // Approximate center-right of parent
                     val end = node.position + panOffset // Approximate top-left of child
                     
                     val path = Path().apply {
